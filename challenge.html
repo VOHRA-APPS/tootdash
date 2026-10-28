@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toot Dash challenge</title>
+<meta property="og:title" content="Can you beat my Toot Dash score?">
+<meta property="og:description" content="The funny runner where you toot to jump. Free on Google Play.">
+<style>
+  body{margin:0;background:#10122a;color:#fff7e6;font:17px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;}
+  main{max-width:520px;margin:0 auto;padding:44px 20px 56px;text-align:center;}
+  .tag{display:inline-block;background:#ff6aa8;color:#1d1420;font-weight:800;padding:6px 12px;letter-spacing:.08em;font-size:13px}
+  h1{font-size:30px;line-height:1.15;margin:16px 0 6px;color:#ffd040}
+  .score{font-size:56px;font-weight:900;line-height:1;margin:10px 0 4px;color:#fff}
+  .muted{color:#b9b4d8;font-size:15px}
+  a.btn{display:block;margin:14px 0 0;padding:16px;border:3px solid #1d1420;font-weight:800;text-decoration:none;font-size:18px;box-shadow:0 5px 0 #1d1420}
+  .play{background:#8fd13a;color:#16240a}.open{background:#2c2f66;color:#fff7e6}
+</style>
+</head>
+<body>
+<main>
+  <span class="tag">FRIEND CHALLENGE</span>
+  <h1>Can you beat this score in Toot Dash?</h1>
+  <div class="score" id="s">?</div>
+  <p class="muted" id="d"></p>
+  <a class="btn open" id="open" href="#">I HAVE THE GAME: ACCEPT</a>
+  <a class="btn play" id="play" href="https://play.google.com/store/apps/details?id=com.tootdash.runner">GET IT FREE ON GOOGLE PLAY</a>
+  <p class="muted" style="margin-top:22px">Just installed it? Come back to this page and tap ACCEPT to load the challenge.</p>
+</main>
+<script>
+  var q=new URLSearchParams(location.search),s=parseInt(q.get('s')||'0',10),d=parseInt(q.get('d')||'0',10);
+  if(s>0)document.getElementById('s').textContent=s.toLocaleString();
+  if(d>0)document.getElementById('d').textContent='They ran '+d.toLocaleString()+' m. Pass their flag on the track!';
+  var store='https://play.google.com/store/apps/details?id=com.tootdash.runner';
+  document.getElementById('open').href='intent://challenge?s='+s+'&d='+d+'#Intent;scheme=tootdash;package=com.tootdash.runner;S.browser_fallback_url='+encodeURIComponent(store)+';end';
+</script>
+</body>
+</html>
